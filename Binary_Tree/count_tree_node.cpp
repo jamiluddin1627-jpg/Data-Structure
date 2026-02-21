@@ -52,9 +52,17 @@ void level_order(Node* root){
         if(current->right) q.push(current->right);
     }
 }
+int count_nodes(Node* root){
+    if(root == NULL) return 0;
+    int left_count = count_nodes(root->left);
+    int right_count = count_nodes(root->right);
+    return left_count + right_count + 1; // +1 for counting the current node
+}
 int main()
 {
     Node* root = input_tree();
     level_order(root);
+    cout<<endl;
+    cout<<"Total number of nodes in the tree: "<<count_nodes(root)<<endl;
     return 0;
 } 
