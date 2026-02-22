@@ -73,5 +73,7 @@ int main()
     level_order(root);
     cout<<endl;
     cout<<"Total number of nodes in the tree: "<<count_nodes(root)<<endl;
+    cout<<"Total number of leaf nodes in the tree: "<<count_leaf_nodes(root)<<endl;
+    count_leaf_nodes(root);
     return 0;
 } 
