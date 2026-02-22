@@ -58,6 +58,15 @@ int count_nodes(Node* root){
     int right_count = count_nodes(root->right);
     return left_count + right_count + 1; // +1 for counting the current node
 }
+int count_leaf_nodes(Node* root){
+    if(root == NULL) return 0;
+    if(root->left == NULL && root->right == NULL) return 1; // if the current node is a leaf node then return 1
+    else{
+        int l = count_leaf_nodes(root->left);
+        int r = count_leaf_nodes(root->right);
+        return l + r; // if the current node is not a leaf node then return the sum of left and right leaf nodes
+    }
+}
 int main()
 {
     Node* root = input_tree();
