@@ -45,26 +45,42 @@ Node* input_tree(){
     return root;
 }
 
-bool binary_search(Node* root, int x){
-    if(root == NULL) return false;
+void level_order(Node* root){
+    if(root == NULL) return;
 
-    if(root->val == x){
-        return true;
+    queue<Node*> q;
+    q.push(root);
+
+    while(!q.empty())
+    {
+        Node* cur = q.front();
+        q.pop();
+
+        cout << cur->val << " ";
+
+        if(cur->left != NULL) q.push(cur->left);
+        if(cur->right != NULL) q.push(cur->right);
+    }
+}
+
+void insert_in_BST(Node *&root, int x){
+    if(root == NULL){
+        root = new Node(x);
+        return;
     }
 
-    if(x < root->val) return binary_search(root->left, x);
-    else return binary_search(root->right, x);
+    if(x < root->val) insert_in_BST(root->left, x);
+    else insert_in_BST(root->right, x);
 }
    
 int main()
 {
     Node* root = input_tree();
     if(root == NULL) return 0;
-
     int x;
     cin >> x;
-    if(binary_search(root, x)) cout << "Found" << endl;
-    else cout << "Not Found" << endl;
+    insert_in_BST(root, x);
+    level_order(root);
     
     return 0;
 }
