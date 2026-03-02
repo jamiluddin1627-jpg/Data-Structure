@@ -6,7 +6,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-      "args": [],
+      "args": ["<", "input.txt", ">", "output.txt"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "externalConsole": true,
