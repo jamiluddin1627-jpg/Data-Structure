@@ -7,7 +7,7 @@ void insert_in_heap(vector<int> &heap, int x)
     while(current > 0)
     {
         int parent = (current - 1) / 2;
-        if(heap[parent] < heap[current])
+        if(heap[parent] > heap[current])
         {
             swap(heap[parent], heap[current]);
             current = parent;
@@ -32,12 +32,12 @@ void delete_from_heap(vector<int> &v)
         
         if( left_idx<= last_idx && right_idx <= last_idx)
         {
-            if(v[left_idx] >= v[right_idx] && v[left_idx] > v[current])
+            if(v[left_idx] <= v[right_idx] && v[left_idx] < v[current])
             {
                 swap(v[left_idx], v[current]);
                 current = left_idx;
             }
-            else if(v[right_idx] > v[current])
+            else if(v[right_idx] < v[current])
             {
                 swap(v[right_idx], v[current]);
                 current = right_idx;
@@ -49,7 +49,7 @@ void delete_from_heap(vector<int> &v)
         }
         else if(left_idx <= last_idx)
         {
-            if(v[left_idx] > v[current])
+            if(v[left_idx] < v[current])
             {
                 swap(v[left_idx], v[current]);
                 current = left_idx;
@@ -61,7 +61,7 @@ void delete_from_heap(vector<int> &v)
         }
         else if(right_idx <= last_idx)
         {
-            if(v[right_idx] > v[current])
+            if(v[right_idx] < v[current])
             {
                 swap(v[right_idx], v[current]);
                 current = right_idx;

@@ -1,4 +1,3 @@
-// Insertion in Max Heap
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -16,7 +15,7 @@ int main()
         while(current > 0)
         {
             int parent = (current - 1) / 2;
-            if(v[parent] < v[current]) swap(v[parent], v[current]);
+            if(v[parent] > v[current]) swap(v[parent], v[current]);
             else break;
             current = parent;
         }
